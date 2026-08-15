@@ -1,0 +1,126 @@
+[
+  {
+    "id": "seed-001",
+    "technology": "Docker",
+    "problem_title": "Container exits with code 137 (OOM Killed)",
+    "problem_description": "Docker container keeps getting killed with exit code 137. The OOMKilled flag is set to true in docker inspect output.",
+    "solution": "Exit code 137 means the container was killed by the OOM (Out of Memory) killer. Increase the container memory limit using --memory flag or in docker-compose.yml. Check your application for memory leaks. For JVM apps, set -XX:MaxRAMPercentage=75.",
+    "error_pattern": "exit code 137",
+    "tags": [
+      "docker",
+      "oom",
+      "memory",
+      "exit-code-137",
+      "container"
+    ],
+    "source_problem_id": null,
+    "validations_positive": 18,
+    "validations_negative": 2,
+    "trust_score": 90.0,
+    "created_at": "2026-07-01T10:00:00Z",
+    "updated_at": "2026-08-10T15:30:00Z"
+  },
+  {
+    "id": "seed-002",
+    "technology": "Git",
+    "problem_title": "Fatal: refusing to merge unrelated histories",
+    "problem_description": "When trying to pull or merge, git throws 'fatal: refusing to merge unrelated histories' error.",
+    "solution": "Use the --allow-unrelated-histories flag: git pull origin main --allow-unrelated-histories. This happens when two repos with different root commits are being merged, commonly after a force push or when combining two separate projects.",
+    "error_pattern": "refusing to merge unrelated histories",
+    "tags": [
+      "git",
+      "merge",
+      "unrelated-histories",
+      "pull"
+    ],
+    "source_problem_id": null,
+    "validations_positive": 24,
+    "validations_negative": 1,
+    "trust_score": 96.0,
+    "created_at": "2026-06-15T08:00:00Z",
+    "updated_at": "2026-08-05T12:00:00Z"
+  },
+  {
+    "id": "seed-003",
+    "technology": "AWS",
+    "problem_title": "AccessDeniedException when calling S3 PutObject",
+    "problem_description": "Getting AccessDeniedException when trying to upload files to S3 bucket even though IAM policy seems correct.",
+    "solution": "Check for: 1) Bucket policy conflicting with IAM policy, 2) S3 Block Public Access settings, 3) The IAM role/user ARN matches what's in the bucket policy, 4) If using KMS encryption, ensure kms:GenerateDataKey permission is granted, 5) Check for explicit Deny statements that override Allow.",
+    "error_pattern": "AccessDeniedException",
+    "tags": [
+      "aws",
+      "s3",
+      "iam",
+      "permissions",
+      "access-denied"
+    ],
+    "source_problem_id": null,
+    "validations_positive": 12,
+    "validations_negative": 3,
+    "trust_score": 80.0,
+    "created_at": "2026-07-20T14:00:00Z",
+    "updated_at": "2026-08-12T09:00:00Z"
+  },
+  {
+    "id": "seed-004",
+    "technology": "Python",
+    "problem_title": "ModuleNotFoundError after pip install",
+    "problem_description": "Package installs successfully with pip but Python throws ModuleNotFoundError when trying to import it.",
+    "solution": "This usually means pip and python point to different environments. Fix: 1) Use 'python -m pip install package' to ensure same environment, 2) Check 'which python' and 'which pip' point to same location, 3) If using virtualenv, make sure it's activated, 4) For multiple Python versions, use python3 -m pip explicitly.",
+    "error_pattern": "ModuleNotFoundError",
+    "tags": [
+      "python",
+      "pip",
+      "virtualenv",
+      "import",
+      "module-not-found"
+    ],
+    "source_problem_id": null,
+    "validations_positive": 31,
+    "validations_negative": 2,
+    "trust_score": 94.0,
+    "created_at": "2026-05-10T11:00:00Z",
+    "updated_at": "2026-08-01T16:00:00Z"
+  },
+  {
+    "id": "seed-005",
+    "technology": "Docker",
+    "problem_title": "Cannot connect to Docker daemon",
+    "problem_description": "Getting 'Cannot connect to the Docker daemon at unix:///var/run/docker.sock' error when running docker commands.",
+    "solution": "1) Start Docker daemon: sudo systemctl start docker, 2) Add user to docker group: sudo usermod -aG docker $USER (then logout/login), 3) Check if Docker Desktop is running (macOS/Windows), 4) Check socket permissions: ls -la /var/run/docker.sock",
+    "error_pattern": "Cannot connect to the Docker daemon",
+    "tags": [
+      "docker",
+      "daemon",
+      "socket",
+      "permissions"
+    ],
+    "source_problem_id": null,
+    "validations_positive": 22,
+    "validations_negative": 1,
+    "trust_score": 95.0,
+    "created_at": "2026-06-01T09:00:00Z",
+    "updated_at": "2026-07-28T11:00:00Z"
+  },
+  {
+    "id": "8f5fa95f-860a-4271-aead-c43fe84e2149",
+    "technology": "Node.js",
+    "problem_title": "ENOSPC: System limit for file watchers reached",
+    "problem_description": "Node.js dev server crashes with ENOSPC error about file watchers",
+    "solution": "Increase the inotify watch limit: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p",
+    "error_pattern": "ENOSPC: System limit for number of file watchers reached",
+    "tags": [
+      "nodejs",
+      "enospc",
+      "file-watchers",
+      "inotify",
+      "linux"
+    ],
+    "source_problem_id": null,
+    "validations_positive": 0,
+    "validations_negative": 0,
+    "trust_score": 0.0,
+    "created_at": "2026-08-15T05:53:09.015013Z",
+    "updated_at": "2026-08-15T05:53:09.015013Z"
+  }
+]
