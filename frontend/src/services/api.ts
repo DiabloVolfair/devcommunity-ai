@@ -104,3 +104,25 @@ export async function getKnowledgeEntry(id: string): Promise<KnowledgeEntry> {
   if (!res.ok) throw new Error(await res.text());
   return res.json();
 }
+
+// Feed
+export interface FeedItem {
+  id: string;
+  type: "problem" | "knowledge";
+  technology: string;
+  title: string;
+  description: string;
+  error_pattern?: string;
+  tags: string[];
+  status?: string;
+  trust_score?: number;
+  validations_positive: number;
+  validations_negative: number;
+  created_at: string;
+}
+
+export async function getFeed(): Promise<{ items: FeedItem[]; total: number }> {
+  const res = await fetch(`${API_BASE}/feed/`);
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
+}

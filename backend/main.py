@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routes.analysis import router as analysis_router
+from app.routes.feed import router as feed_router
 from app.routes.knowledge import router as knowledge_router
 from app.routes.problems import router as problems_router
 
@@ -31,6 +32,7 @@ app.add_middleware(
 app.include_router(problems_router, prefix="/api")
 app.include_router(analysis_router, prefix="/api")
 app.include_router(knowledge_router, prefix="/api")
+app.include_router(feed_router, prefix="/api")
 
 
 @app.get("/")
