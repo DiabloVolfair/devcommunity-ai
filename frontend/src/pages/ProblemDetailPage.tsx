@@ -23,9 +23,10 @@ export default function ProblemDetailPage() {
     try {
       const result = await analyzeProblem(id);
       setAnalysis(result);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert("Failed to analyze. Make sure the backend is running.");
+      const message = err?.message || "Unknown error";
+      alert(`Analysis failed: ${message}\n\nMake sure the backend is running and the Gemini API key is configured.`);
     } finally {
       setAnalyzing(false);
     }
@@ -139,7 +140,7 @@ export default function ProblemDetailPage() {
           {analyzing ? (
             <span className="flex items-center justify-center gap-2">
               <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-              Analyzing with AI...
+              Analyzing with AI (may take 10-20 seconds)...
             </span>
           ) : (
             "Analyze with AI"

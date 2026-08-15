@@ -1,6 +1,8 @@
-"""In-memory storage for problems. Simple dict-based store for MVP."""
+"""Problem storage with JSON file persistence."""
 
+import json
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Optional
 
 from app.models.problem import (
@@ -10,12 +12,35 @@ from app.models.problem import (
     create_problem_id,
 )
 
+DATA_DIR = Path(__file__).parent.parent.parent / "data"
+PROBLEMS_FILE = DATA_DIR / "problems.json"
 
-class MemoryStore:
-    """Simple in-memory storage using a dictionary."""
+
+class ProblemStore:
+    """Problem storage with JSON file persistence."""
 
     def __init__(self):
         self._problems: dict[str, ProblemResponse] = {}
+        self._load()
+
+    def _load(self):
+        """Load problems from JSON file if it exists."""
+        if PROBLEMS_FILE.exists():
+            try:
+                raw = json.loads(PROBLEMS_FILE.read_text(encoding="utf-8"))
+                for item in raw:
+                    problem = ProblemResponse(**item)
+                    self._problems[problem.id] = problem
+            except (json.JSONDecodeError, Exception):
+                pass
+
+    def _save(self):
+        """Persist all problems to JSON file."""
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        data = [p.model_dump(mode="json") for p in self._problems.values()]
+        PROBLEMS_FILE.write_text(
+            json.dumps(data, indent=2, default=str), encoding="utf-8"
+        )
 
     def create_problem(self, problem: ProblemCreate) -> ProblemResponse:
         """Store a new problem and return it with generated metadata."""
@@ -36,6 +61,7 @@ class MemoryStore:
         )
 
         self._problems[problem_id] = stored
+        self._save()
         return stored
 
     def get_problem(self, problem_id: str) -> Optional[ProblemResponse]:
@@ -56,4 +82,4 @@ class MemoryStore:
 
 
 # Singleton instance used across the app
-store = MemoryStore()
+store = ProblemStore()
