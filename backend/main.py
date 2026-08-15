@@ -1,4 +1,4 @@
-"""DevCommunity AI — Backend API entry point."""
+"""DevResolve AI — Backend API entry point."""
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -9,7 +9,7 @@ from app.routes.knowledge import router as knowledge_router
 from app.routes.problems import router as problems_router
 
 app = FastAPI(
-    title="DevCommunity AI",
+    title="DevResolve AI",
     description="AI-powered community knowledge and troubleshooting for developers.",
     version="0.1.0",
 )
@@ -39,7 +39,7 @@ app.include_router(feed_router, prefix="/api")
 def root():
     """Health check / welcome endpoint."""
     return {
-        "name": "DevCommunity AI",
+        "name": "DevResolve AI",
         "version": "0.1.0",
         "status": "running",
     }

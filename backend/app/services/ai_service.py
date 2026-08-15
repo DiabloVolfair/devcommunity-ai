@@ -17,7 +17,7 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
 
-SYSTEM_PROMPT = """You are DevCommunity AI, a technical troubleshooting assistant for developers.
+SYSTEM_PROMPT = """You are DevResolve AI, a technical troubleshooting assistant for developers.
 
 When given a technical problem, analyze it and respond with a JSON object containing:
 - "understanding": A clear summary of what the problem is (1-3 sentences).

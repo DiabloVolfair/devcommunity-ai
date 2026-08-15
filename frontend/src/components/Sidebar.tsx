@@ -15,7 +15,7 @@ export default function Sidebar() {
         {/* Branding */}
         <div className="bg-white rounded-lg border border-gray-200 p-5 mb-4">
           <h2 className="font-bold text-base text-gray-900 mb-1">
-            DevCommunity AI
+            DevResolve AI
           </h2>
           <p className="text-sm text-gray-600 leading-relaxed">
             AI-powered troubleshooting backed by community-validated solutions.

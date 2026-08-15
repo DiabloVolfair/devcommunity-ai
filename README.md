@@ -1,4 +1,4 @@
-# DevCommunity AI
+# DevResolve AI
 
 AI-powered troubleshooting platform that combines AI assistance with community-validated technical knowledge.
 
@@ -8,7 +8,7 @@ AI-powered troubleshooting platform that combines AI assistance with community-v
 
 ## What It Does
 
-When a developer submits a technical problem, DevCommunity AI:
+When a developer submits a technical problem, DevResolve AI:
 
 1. Retrieves relevant solutions from the community knowledge base (semantic search)
 2. Feeds that context to an AI model (Google Gemini)

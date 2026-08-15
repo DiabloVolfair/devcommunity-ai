@@ -10,10 +10,10 @@ export default function Header() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 shrink-0">
           <div className="w-8 h-8 bg-gray-900 rounded-md flex items-center justify-center">
-            <span className="text-white text-sm font-bold">DC</span>
+            <span className="text-white text-sm font-bold">DR</span>
           </div>
           <span className="font-semibold text-gray-900 hidden sm:block">
-            DevCommunity
+            DevResolve
           </span>
         </Link>
 

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "01d35f65-c5e1-4c55-aecd-cad986fe2368",
+    "technology": "Docker",
+    "title": "Docker Image Pull Access Denied",
+    "description": "Docker cannot access the requested image because it is unavailable or requires authentication.",
+    "error_message": "docker: Error response from daemon: pull access denied for myapp, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.",
+    "logs": null,
+    "context": null,
+    "status": "pending",
+    "created_at": "2026-08-15T07:23:01.707180Z",
+    "updated_at": "2026-08-15T07:23:01.707180Z"
+  }
+]
