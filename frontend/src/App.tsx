@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import AskPage from "./pages/AskPage";
 import KnowledgePage from "./pages/KnowledgePage";
 import KnowledgeDetailPage from "./pages/KnowledgeDetailPage";
+import ProblemDetailPage from "./pages/ProblemDetailPage";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
               <Route path="/ask" element={<AskPage />} />
               <Route path="/knowledge" element={<KnowledgePage />} />
               <Route path="/knowledge/:id" element={<KnowledgeDetailPage />} />
+              <Route path="/problem/:id" element={<ProblemDetailPage />} />
             </Routes>
           </main>
 
